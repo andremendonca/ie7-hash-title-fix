@@ -1,5 +1,5 @@
 /*
- * Version: 0.0.1
+ * Version: 0.0.2
  * Author: André Mendonça
  */
 (function() {
@@ -14,9 +14,8 @@
     document.title = cleanTitle(oldTitle);
     document.onpropertychange = function() {
       var docTitle = document.title || '';
-      if (window.event.propertyName != 'title' || docTitle === oldTitle) {
-          return;
+      if (window.event.propertyName === 'title' && docTitle !== oldTitle) {
+        document.title = cleanTitle(docTitle);
       }
-      document.title = cleanTitle(docTitle);
     }
 })();
